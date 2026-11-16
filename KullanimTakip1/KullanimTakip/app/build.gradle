@@ -1,0 +1,30 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.kullanim.takip'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.kullanim.takip'
+        minSdk 24
+        targetSdk 34
+        versionCode 5
+        versionName '1.4'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Hemen kurulabilsin diye debug anahtarıyla imzalanır.
+            // Yayın için kendi keystore'unuzu tanımlayın.
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint { abortOnError false; checkReleaseBuilds false }
+}
+// Bilerek hiçbir bağımlılık yok -> en küçük APK
